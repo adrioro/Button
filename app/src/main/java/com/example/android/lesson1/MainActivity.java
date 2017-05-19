@@ -7,7 +7,6 @@
 
 package com.example.android.lesson1;
 
-
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -28,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        display(1);
+        display(5);
     }
 
     /**
