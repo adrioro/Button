@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 /**
@@ -20,13 +21,17 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     int quantity = 0;
+    /**
+     * This the input field method
+     */
+    EditText nameEditText = (EditText) findViewById(R.id.name_input);
+    String strValue = nameEditText.getText().toString();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
 
     /**
      * Calculates the price of the order.
@@ -44,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
      */
 
     private String createOrderSummary(int price, boolean addWhippedCream, boolean addChocolate) {
-        String priceMessage = "\nName: Adri";
+        String priceMessage = "\nName: " + strValue;
         priceMessage = priceMessage + "\nAdd whipped cream? " + addWhippedCream;
         priceMessage = priceMessage + "\nAdd chocolate? " + addChocolate;
         priceMessage = priceMessage + "\nQuantity:" + quantity;
@@ -52,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         priceMessage = priceMessage + "\nThank you!";
         return priceMessage;
     }
-
 
     /**
      * This method is called when the order button is clicked.
