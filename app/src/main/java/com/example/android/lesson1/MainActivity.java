@@ -21,17 +21,21 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     int quantity = 0;
-    /**
-     * This the input field method
-     */
-    EditText nameEditText = (EditText) findViewById(R.id.name_input);
-    String strValue = nameEditText.getText().toString();
+    EditText nameEditText;
+    String strValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        /**
+         * This the input field method
+         */
+        nameEditText = (EditText) findViewById(R.id.name_input);
+        strValue = nameEditText.getText().toString();
     }
+
 
     /**
      * Calculates the price of the order.
