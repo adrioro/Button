@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     int quantity = 0;
     EditText nameEditText;
-    String strValue;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
          * This the input field method
          */
         nameEditText = (EditText) findViewById(R.id.name_input);
-        strValue = nameEditText.getText().toString();
+
     }
 
 
@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
      */
 
     private String createOrderSummary(int price, boolean addWhippedCream, boolean addChocolate) {
+        String strValue = nameEditText.getText().toString();
         String priceMessage = "\nName: " + strValue;
         priceMessage = priceMessage + "\nAdd whipped cream? " + addWhippedCream;
         priceMessage = priceMessage + "\nAdd chocolate? " + addChocolate;
