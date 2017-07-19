@@ -16,10 +16,10 @@
             android:id="@+id/name_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Your Name Here"
-            android:inputType="textPersonName"
+            android:hint="Name"
+            android:inputType="textCapWords"
             android:lines="1"
-            android:maxLength="21"
+            android:maxLength="33"
             android:maxLines="1" />
 
         <TextView

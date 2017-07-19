@@ -21,7 +21,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     int quantity = 0;
-    EditText nameEditText;
+    EditText nameField;
 
 
     @Override
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         /**
          * This the input field method
          */
-        nameEditText = (EditText) findViewById(R.id.name_input);
+        nameField = (EditText) findViewById(R.id.name_input);
 
     }
 
@@ -53,8 +53,14 @@ public class MainActivity extends AppCompatActivity {
      */
 
     private String createOrderSummary(int price, boolean addWhippedCream, boolean addChocolate) {
-        String strValue = nameEditText.getText().toString();
-        String priceMessage = "\nName: " + strValue;
+        /**
+         * gets the text that was pulled from the nameField (input field) as an String
+         */
+        String name = nameField.getText().toString();
+        /**
+         * prints the name and all the rest of the messages
+         */
+        String priceMessage = "\nName: " + name;
         priceMessage = priceMessage + "\nAdd whipped cream? " + addWhippedCream;
         priceMessage = priceMessage + "\nAdd chocolate? " + addChocolate;
         priceMessage = priceMessage + "\nQuantity:" + quantity;
@@ -73,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
         boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
         /**
-         * Delete the Log.v later
+         * Delete the Log.v later. It's only to check the value.
          */
         Log.v("MainActivity", "Has whipped cream:" + hasWhippedCream);
 
@@ -84,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         CheckBox ChocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_checkbox);
         boolean hasChocolate = ChocolateCheckBox.isChecked();
         /**
-         * Delete the Log.v later
+         * Delete the Log.v later. It's only to check the value.
          */
         Log.v("MainActivity", "Has chocolate:" + hasChocolate);
 
