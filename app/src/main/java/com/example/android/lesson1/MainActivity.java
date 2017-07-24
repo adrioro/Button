@@ -22,6 +22,11 @@ public class MainActivity extends AppCompatActivity {
 
     int quantity = 0;
     EditText nameField;
+    int cream = 1;
+    int chocolate = 2;
+    int price = quantity * 6;
+    int totalprice = 0;
+
 
 
     @Override
@@ -44,15 +49,49 @@ public class MainActivity extends AppCompatActivity {
      */
 
     private int calculatePrice() {
-        int price = quantity * 5;
-        return price;
+
+        CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
+        boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
+        CheckBox ChocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_checkbox);
+        boolean hasChocolate = ChocolateCheckBox.isChecked();
+        if (hasWhippedCream) {
+            totalprice = price + cream;
+            return totalprice;
+        } else if (hasChocolate) {
+            totalprice = totalprice + chocolate;
+            return totalprice;
+        } else {
+            totalprice = quantity * 6;
+        }
+        return totalprice;
+
     }
 
     /**
-     * Order summary text.
+     * Calculates the additional price if cream is ordered.
+     */
+    private int calculateCreamPrice() {
+        int creamPrice = quantity * cream;
+        return creamPrice;
+    }
+
+    /**
+     * Calculates the additional price if choco is ordered.
+     */
+    private int calculateChocoPrice() {
+        int chocoPrice = quantity * chocolate;
+        return chocoPrice;
+    }
+
+
+
+    /**
+     * Order SUMMARY text.
      */
 
     private String createOrderSummary(int price, boolean addWhippedCream, boolean addChocolate) {
+
+
         /**
          * gets the text that was pulled from the nameField (input field) as an String
          */
@@ -94,12 +133,12 @@ public class MainActivity extends AppCompatActivity {
          */
         Log.v("MainActivity", "Has chocolate:" + hasChocolate);
 
+
         int price = calculatePrice();
         String priceMessage = createOrderSummary(price, hasWhippedCream, hasChocolate);
         displayMessage(priceMessage);
 
     }
-
 
     /**
      * This method is called when the plus button is clicked.
