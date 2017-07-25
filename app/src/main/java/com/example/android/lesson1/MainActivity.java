@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     int price = quantity * 6;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +47,11 @@ public class MainActivity extends AppCompatActivity {
 
     private int calculatePrice() {
 
+        int finalPrice = 0;
+        int choco = 0;
+        int cream = 0;
+
+
         CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
         boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
         CheckBox ChocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_checkbox);
@@ -53,16 +59,17 @@ public class MainActivity extends AppCompatActivity {
 
 
         if (hasWhippedCream) {
-            price = price + 1;
+            choco = 1;
 
         }
         if (hasChocolate) {
-            price = price + 2;
+            cream = 2;
 
         } else {
             price = quantity * 6;
         }
-        return price;
+        finalPrice = price + choco + cream;
+        return finalPrice;
 
     }
 
