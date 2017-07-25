@@ -55,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
         if (hasWhippedCream) {
             price = price + 1;
 
-        } else if (hasChocolate) {
+        }
+        if (hasChocolate) {
             price = price + 2;
 
         } else {
@@ -64,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
         return price;
 
     }
-
 
 
     /**
