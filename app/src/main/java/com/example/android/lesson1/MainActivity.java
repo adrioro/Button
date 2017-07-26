@@ -50,8 +50,7 @@ public class MainActivity extends AppCompatActivity {
         int finalPrice = 0;
         int choco = 0;
         int cream = 0;
-        int chocoAdd = 0;
-        int creamAdd = 0;
+        int price = quantity * 5;
 
 
         CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
@@ -61,19 +60,16 @@ public class MainActivity extends AppCompatActivity {
 
 
         if (hasWhippedCream) {
-            choco = 1;
-            chocoAdd = choco * quantity;
+            choco = 1 * quantity;
 
         }
         if (hasChocolate) {
-            cream = 2;
-            creamAdd = cream * quantity;
-
+            cream = 2 * quantity;
 
         } else {
             price = quantity * 5;
         }
-        finalPrice = price + chocoAdd + creamAdd;
+        finalPrice = price + choco + cream;
         return finalPrice;
 
     }
