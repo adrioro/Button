@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     int quantity = 0;
     EditText nameField;
-    int price = quantity * 6;
+    int price = quantity * 5;
 
 
 
@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         int finalPrice = 0;
         int choco = 0;
         int cream = 0;
+        int chocoAdd = 0;
+        int creamAdd = 0;
 
 
         CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
@@ -60,15 +62,18 @@ public class MainActivity extends AppCompatActivity {
 
         if (hasWhippedCream) {
             choco = 1;
+            chocoAdd = choco * quantity;
 
         }
         if (hasChocolate) {
             cream = 2;
+            creamAdd = cream * quantity;
+
 
         } else {
-            price = quantity * 6;
+            price = quantity * 5;
         }
-        finalPrice = price + choco + cream;
+        finalPrice = price + chocoAdd + creamAdd;
         return finalPrice;
 
     }
