@@ -58,6 +58,10 @@ public class MainActivity extends AppCompatActivity {
         CheckBox ChocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_checkbox);
         boolean hasChocolate = ChocolateCheckBox.isChecked();
 
+        /** Conditional statement to allow for the addition of cream or/and chocolate.
+         *
+         */
+
 
         if (hasWhippedCream) {
             choco = 1 * quantity;
