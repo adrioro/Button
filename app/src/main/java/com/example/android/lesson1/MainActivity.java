@@ -42,10 +42,12 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Calculates the price of the order.
      *
+     * @param addWhippedCream is wheter or not the user wants whipped cream topping
+     * @param addChocolate is whether or not the user wants chocolate topping
      * @return total price
      */
 
-    private int calculatePrice() {
+    private int calculatePrice(boolean addWhippedCream, boolean addChocolate) {
 
         int finalPrice = 0;
         int choco = 0;
@@ -53,21 +55,17 @@ public class MainActivity extends AppCompatActivity {
         int price = quantity * 5;
 
 
-        CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
-        boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
-        CheckBox ChocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_checkbox);
-        boolean hasChocolate = ChocolateCheckBox.isChecked();
 
         /** Conditional statement to allow for the addition of cream or/and chocolate.
          *
          */
 
 
-        if (hasWhippedCream) {
+        if (addWhippedCream) {
             choco = 1 * quantity;
 
         }
-        if (hasChocolate) {
+        if (addChocolate) {
             cream = 2 * quantity;
 
         } else {
@@ -97,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         priceMessage = priceMessage + "\nAdd whipped cream? " + addWhippedCream;
         priceMessage = priceMessage + "\nAdd chocolate? " + addChocolate;
         priceMessage = priceMessage + "\nQuantity:" + quantity;
-        priceMessage = priceMessage + "\nTotal: $" + calculatePrice();
+        priceMessage = priceMessage + "\nTotal: $" + calculatePrice(addWhippedCream, addChocolate);
         priceMessage = priceMessage + "\nThank you!";
         return priceMessage;
     }
@@ -128,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         Log.v("MainActivity", "Has chocolate:" + hasChocolate);
 
 
-        int price = calculatePrice();
+        int price = calculatePrice(hasWhippedCream, hasChocolate);
         String priceMessage = createOrderSummary(price, hasWhippedCream, hasChocolate);
         displayMessage(priceMessage);
 
