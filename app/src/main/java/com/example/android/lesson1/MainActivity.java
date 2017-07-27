@@ -157,7 +157,6 @@ public class MainActivity extends AppCompatActivity {
             }
             if (quantity > 10)
                 quantity = quantity - 1;
-
         }
 
         displayQuantity(quantity);
@@ -167,7 +166,6 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the minus button is clicked.
      */
     public void decrement(View view) {
-
 
         /**
          * This where the Toast text message is created.
