@@ -136,23 +136,29 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the plus button is clicked.
      */
     public void increment(View view) {
+
         quantity = quantity + 1;
         displayQuantity(quantity);
 
+        /**
+         * This where the Toast text message is created.
+         */
+
         Context context = getApplicationContext();
-        CharSequence text = "Order out or range!";
+        CharSequence text = "Your exceeded the order limit!";
         int duration = Toast.LENGTH_SHORT;
 
         {
-            if (quantity >= 3) ;
-            {
 
+            if (quantity > 2) {
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
 
             }
-
+            if (quantity > 3)
+                quantity = quantity - 1;
             displayQuantity(quantity);
+            return;
 
         }
     }
@@ -161,8 +167,32 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the minus button is clicked.
      */
     public void decrement(View view) {
+
         quantity = quantity - 1;
         displayQuantity(quantity);
+        int numbzero = 0;
+
+        /**
+         * This where the Toast text message is created.
+         */
+
+        Context context = getApplicationContext();
+        CharSequence text = "The minimum order is one coffee.";
+        int duration = Toast.LENGTH_SHORT;
+
+
+        if (quantity == 1) {
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            quantity = +1;
+            return;
+        }
+        if (quantity < 1) {
+            quantity = +1;
+            return;
+        }
+
+
     }
 
 
