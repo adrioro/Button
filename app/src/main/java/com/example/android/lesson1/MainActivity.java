@@ -145,22 +145,22 @@ public class MainActivity extends AppCompatActivity {
          */
 
         Context context = getApplicationContext();
-        CharSequence text = "Your exceeded the order limit!";
+        CharSequence text = "Sorry, the maximum order limit per customer is 100 coffees!";
         int duration = Toast.LENGTH_SHORT;
 
         {
 
-            if (quantity > 2) {
+            if (quantity > 10) {
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
 
             }
-            if (quantity > 3)
+            if (quantity > 10)
                 quantity = quantity - 1;
-            displayQuantity(quantity);
-            return;
 
         }
+
+        displayQuantity(quantity);
     }
 
     /**
@@ -174,16 +174,19 @@ public class MainActivity extends AppCompatActivity {
          */
 
         Context context = getApplicationContext();
-        CharSequence text = "The minimum order is one coffee.";
+        CharSequence text = "The minimum order limit per customer is 1 coffee.";
         int duration = Toast.LENGTH_SHORT;
 
 
         if (quantity > 1) {
             quantity = quantity - 1;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
 
         }
+        if (quantity == 1) {
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
         displayQuantity(quantity);
 
 
