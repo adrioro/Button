@@ -169,9 +169,6 @@ public class MainActivity extends AppCompatActivity {
     public void decrement(View view) {
 
 
-        displayQuantity(quantity);
-        int numbzero = 0;
-
         /**
          * This where the Toast text message is created.
          */
@@ -181,21 +178,13 @@ public class MainActivity extends AppCompatActivity {
         int duration = Toast.LENGTH_SHORT;
 
 
-        if (quantity == 1) {
+        if (quantity > 1) {
+            quantity = quantity - 1;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
-            quantity = +1;
-            return;
-        }
-        if (quantity == 0) {
-            quantity = 0;
-            return;
-        }
 
-        if (quantity > 0) {
-            quantity = quantity - 1;
-            return;
         }
+        displayQuantity(quantity);
 
 
     }
