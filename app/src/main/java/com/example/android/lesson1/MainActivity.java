@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void decrement(View view) {
 
-        quantity = quantity - 1;
+
         displayQuantity(quantity);
         int numbzero = 0;
 
@@ -187,8 +187,13 @@ public class MainActivity extends AppCompatActivity {
             quantity = +1;
             return;
         }
-        if (quantity < 1) {
-            quantity = +1;
+        if (quantity == 0) {
+            quantity = 0;
+            return;
+        }
+
+        if (quantity > 0) {
+            quantity = quantity - 1;
             return;
         }
 
