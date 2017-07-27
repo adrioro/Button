@@ -7,6 +7,7 @@
 
 package com.example.android.lesson1;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * This app displays an order form to order coffee.
@@ -23,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     int quantity = 0;
     EditText nameField;
     int price = quantity * 5;
-
 
 
     @Override
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
      * Calculates the price of the order.
      *
      * @param addWhippedCream is wheter or not the user wants whipped cream topping
-     * @param addChocolate is whether or not the user wants chocolate topping
+     * @param addChocolate    is whether or not the user wants chocolate topping
      * @return total price
      */
 
@@ -53,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         int choco = 0;
         int cream = 0;
         int price = quantity * 5;
-
 
 
         /** Conditional statement to allow for the addition of cream or/and chocolate.
@@ -138,6 +138,23 @@ public class MainActivity extends AppCompatActivity {
     public void increment(View view) {
         quantity = quantity + 1;
         displayQuantity(quantity);
+
+        Context context = getApplicationContext();
+        CharSequence text = "Order out or range!";
+        int duration = Toast.LENGTH_SHORT;
+
+        {
+            if (quantity >= 3) ;
+            {
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+
+            }
+
+            displayQuantity(quantity);
+
+        }
     }
 
     /**
