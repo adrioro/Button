@@ -1,4 +1,4 @@
-/**
+/*
  * IMPORTANT: Add your package below. Package name can be found in the project's AndroidManifest.xml file.
  * This is the package name our example uses:
  * <p>
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /**
+        /*
          * This the input field method
          */
         nameField = (EditText) findViewById(R.id.name_input);
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         int price = quantity * 5;
 
 
-        /** Conditional statement to allow for the addition of cream or/and chocolate.
+        /* Conditional statement to allow for the addition of cream or/and chocolate.
          *
          */
 
@@ -84,11 +84,11 @@ public class MainActivity extends AppCompatActivity {
     private String createOrderSummary(int price, boolean addWhippedCream, boolean addChocolate) {
 
 
-        /**
+        /*
          * gets the text that was pulled from the nameField (input field) as an String
          */
         String name = nameField.getText().toString();
-        /**
+        /*
          * prints the name and all the rest of the messages
          */
         String priceMessage = "\nName: " + name;
@@ -104,43 +104,52 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        /**
+        /*
          * Whipped cream check box
          */
         CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
         boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
-        /**
+        /*
          * Delete the Log.v later. It's only to check the value.
          */
         Log.v("MainActivity", "Has whipped cream:" + hasWhippedCream);
-
-
-        /**
+        /*
          * Chocolate check box
          */
         CheckBox ChocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_checkbox);
         boolean hasChocolate = ChocolateCheckBox.isChecked();
-        /**
+        /*
          * Delete the Log.v later. It's only to check the value.
          */
         Log.v("MainActivity", "Has chocolate:" + hasChocolate);
 
-
         int price = calculatePrice(hasWhippedCream, hasChocolate);
         String priceMessage = createOrderSummary(price, hasWhippedCream, hasChocolate);
-        displayMessage(priceMessage);
 
-    }
+        /* Sends email with summary.
 
-    /**
-     * This method is called when the plus button is clicked.
-     */
+
+         Intent intent = new Intent(Intent.ACTION_SENDTO);
+         intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+         intent.putExtra(Intent.EXTRA_SUBJECT, "Coffee order for " + name);
+         intent.putExtra(Intent.EXTRA_TEXT, priceMessage);
+         if (intent.resolveActivity(getPackageManager()) != null) {
+         startActivity(intent);
+         }
+
+
+         }
+
+         /**
+         * This method is called when the plus button is clicked.
+         */
+
     public void increment(View view) {
 
         quantity = quantity + 1;
         displayQuantity(quantity);
 
-        /**
+        /*
          * This where the Toast text message is created.
          */
 
@@ -150,13 +159,13 @@ public class MainActivity extends AppCompatActivity {
 
         {
 
-            if (quantity > 10) {
+            if (quantity == 100) {
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
+                return;
 
             }
-            if (quantity > 10)
-                quantity = quantity - 1;
+
         }
 
         displayQuantity(quantity);
@@ -167,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void decrement(View view) {
 
-        /**
+        /*
          * This where the Toast text message is created.
          */
 
@@ -190,15 +199,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-    /**
-     * This method displays the given text on the screen.
-     */
-    private void displayMessage(String message) {
-        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
-        orderSummaryTextView.setText(message);
-
-    }
 
     /**
      * This method displays the given quantity value on the screen.
