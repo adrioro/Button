@@ -8,6 +8,8 @@
 package com.example.android.lesson1;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -16,6 +18,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import static android.R.attr.name;
 
 /**
  * This app displays an order form to order coffee.
@@ -125,21 +129,19 @@ public class MainActivity extends AppCompatActivity {
 
         int price = calculatePrice(hasWhippedCream, hasChocolate);
         String priceMessage = createOrderSummary(price, hasWhippedCream, hasChocolate);
-    }
 
         /* Sends email with summary.
+         */
 
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Coffee order for " + name);
+        intent.putExtra(Intent.EXTRA_TEXT, priceMessage);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
 
-         Intent intent = new Intent(Intent.ACTION_SENDTO);
-         intent.setData(Uri.parse("mailto:")); // only email apps should handle this
-         intent.putExtra(Intent.EXTRA_SUBJECT, "Coffee order for " + name);
-         intent.putExtra(Intent.EXTRA_TEXT, priceMessage);
-         if (intent.resolveActivity(getPackageManager()) != null) {
-         startActivity(intent);
-         }
-
-
-         }
 
          /**
          * This method is called when the plus button is clicked.
