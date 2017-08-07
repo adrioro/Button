@@ -25,9 +25,6 @@
         <TextView
             android:id="@+id/textView"
             style="@style/HeaderTextStyle"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="16dp"
             android:text="@string/toppings" />
 
         <CheckBox
@@ -49,9 +46,7 @@
         <TextView
 
             style="@style/HeaderTextStyle"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="16dp"
+
             android:text="@string/quantity" />
 
         <LinearLayout
